@@ -1,28 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Form from './components/Form';
+import Score from './components/Score';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  const [score, setScore] = useState(null);
+
+  return (
+    <>
+      <h1>Sjakkify</h1>
+      <Form onSubmit={data => setScore(data.newRating)} />
+      {score !== null && <Score>{score}</Score>}
+    </>
+  );
 }
 
 export default App;
